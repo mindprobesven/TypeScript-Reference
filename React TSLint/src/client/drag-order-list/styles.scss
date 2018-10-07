@@ -1,0 +1,155 @@
+@import '../presets2';
+
+$listBackgroundColor: $color4;
+$itemBorderColor: $color5;
+$itemBackgroundColor: $color7;
+$itemMoveBorderColor: $color1;
+$itemMoveBackgroundColor: $color6;
+$itemHeadlineColor: $color1;
+$itemMessageColor: $color7;
+$buttonIconColor: $color1;
+$buttonIconHoverColor: $color4;
+
+.container {
+  width: 100%;
+
+  .list {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $listBackgroundColor;
+    border-radius: 12px;
+    width: 100%;
+    padding: 10px;
+    overflow: hidden;
+
+    .list-message {
+      color: $itemMessageColor;
+      padding: 10px;
+    }
+
+    .item {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+      background-color: $itemBackgroundColor;
+      border: 1px solid $itemBorderColor;
+      border-radius: 8px;
+      min-width: 100%;
+      margin-bottom: 10px;
+      user-select: none;
+      opacity: 1;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+  
+      .item-content {
+        flex: 1;
+        font-size: 1rem;
+        margin: 20px 0 20px 20px;
+
+        .headline {
+          color: $itemHeadlineColor;
+          line-height: 1.5rem;
+          margin-bottom: 0.5rem;
+        }
+      
+        .body-text {
+          line-height: 1.5rem;
+        }
+      }
+
+      .button-delete {
+        flex: 0;
+        min-width: 30px;
+        height: 25px;
+        margin-left: 20px;
+        cursor: pointer;
+        position: relative;
+
+        .bar {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 100%;
+          height: 5px;
+          background-color: $buttonIconColor;
+          border-radius: 4px;
+          pointer-events: none;
+          transition: all 200ms ease-out;
+        }
+
+        .bar:first-child {
+          transform: rotateZ(45deg) translate(7px, 7px);
+        }
+        
+        .bar:last-child {
+          transform: rotateZ(-45deg) translate(-7px, 7px);
+        }
+      }
+
+      .button-delete:hover > .bar {
+        background-color: $buttonIconHoverColor;
+      }
+
+      .button-delete:hover > .bar:first-child {
+        transform: rotateZ(-45deg) translate(-7px, 7px);
+      }
+      
+      .button-delete:hover > .bar:last-child {
+        transform: rotateZ(45deg) translate(7px, 7px);
+      }
+
+      .button-move {
+        flex: 0;
+        display: flex;
+        justify-content: center;
+        align-items:  center;
+        min-width: 70px;
+        height: 70px;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+
+        .button-move-content {
+          pointer-events: none;
+
+          .bar {
+            width: 30px;
+            height: 5px;
+            background-color: $buttonIconColor;
+            border-radius: 4px;
+            pointer-events: none;
+            transition: all 100ms ease-out;
+          }
+  
+          .bar:first-child {
+            margin-bottom: 5px;
+          }
+          
+          .bar:last-child {
+            margin-top: 5px;
+          }
+        }
+      }
+
+      .button-move:hover > .button-move-content > .bar {
+        background-color: $buttonIconHoverColor;
+      }
+      
+      .button-move:hover > .button-move-content > .bar:first-child {
+        margin-bottom: 10px
+      }
+      
+      .button-move:hover > .button-move-content > .bar:last-child {
+        margin-top: 10px
+      }
+    }
+
+    .item.move {
+      background-color: $itemMoveBackgroundColor;
+      border: 1px solid $itemMoveBorderColor;
+    }
+
+    .item:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
