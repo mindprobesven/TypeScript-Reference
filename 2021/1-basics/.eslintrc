@@ -1,0 +1,18 @@
+{
+  /*
+  ESLint allows for the use of custom parsers. Here we use the @babel/eslint-parser,
+  a parser that allows ESLint to run on source code that is transformed by Babel.
+  */
+  "parser": "@babel/eslint-parser",
+  "env": {
+    "node": true,
+    "browser": false
+  },
+  "rules": {
+    "max-len": ["warn", 80, 2, {"ignoreComments": true}],
+    "indent": ["error", 2],
+    "semi": ["error", "always"],
+    "no-console":  ["error", { "allow": ["warn", "error", "log"] }]
+  },
+  "extends": ["airbnb-base"]
+}
