@@ -1,0 +1,23 @@
+{
+  "name": "todosapiserver",
+  "version": "1.0.0",
+  "description": "Todos API Server",
+  "private": true,
+  "author": "Sven Kohn",
+  "license": "ISC",
+  "scripts": {
+    "build": "webpack --config webpack.config.js",
+    "start": "NODE_ENV=development nodemon dist/main.js",
+    "dev": "webpack serve --open"
+  },
+  "devDependencies": {
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-webpack-plugin": "^2.5.4",
+    "nodemon": "^2.0.7",
+    "webpack": "^5.21.2",
+    "webpack-cli": "^4.4.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
