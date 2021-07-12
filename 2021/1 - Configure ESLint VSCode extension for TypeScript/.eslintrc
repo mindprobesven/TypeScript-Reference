@@ -1,0 +1,39 @@
+{
+  /*
+  Chapter 1 - Activate real-time TypeScript linting with the ESLint VSCode extension
+  --------------------------------------------------------------------------------------
+  1. First, we need to explicitly tell the eslint extension to watch typescript files for
+  linting errors (by default it lints only javascript and JSX files).
+
+  Inside VS Code use: Ctrl+Shift+P
+  Type: Preferences: Open Settings (JSON)
+  Paste this code inside the opened JSON file
+  {
+    "eslint.validate": ["typescript", "typescriptreact"]
+  }
+
+  2. Install the required packages
+  npm install --save-dev eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+  3. Create the .eslintrc configuration file
+  See below
+
+  Chapter 2 - Manually running a lint check on files
+  --------------------------------------------------------------------------------------
+  1. With this npm script ESLint will perform linting on all .ts files in the src directory
+  "lint": "eslint --ext .ts src/"
+  */
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": false
+  },
+  // This allows ESLint to understand TypeScript syntax
+  "parser": "@typescript-eslint/parser",
+  // This allows you to use the rules within your codebase
+  "plugins": ["@typescript-eslint"],
+  // Tells ESLint that your config extends the given configurations
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "eslintnode",
+  "version": "1.0.0",
+  "description": "ESLint for Node",
+  "private": true,
+  "author": "Sven Kohn",
+  "license": "ISC",
+  "scripts": {
+    "lint": "eslint --ext .ts src/"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint": "^7.30.0",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.5"
+  }
+}
