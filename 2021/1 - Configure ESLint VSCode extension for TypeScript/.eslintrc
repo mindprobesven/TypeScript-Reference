@@ -1,28 +1,34 @@
+/*
+Chapter 1 - Enable editor real-time linting with the ESLint VSCode extension
+--------------------------------------------------------------------------------------
+1. Install the required packages
+npm install --save-dev eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
+
+2. Create the .eslintrc configuration file
+See below
+
+3. At this point, we should have editor linting and default typescript type checking working.
+Since we haven't created a tsconfig.json yet, VSCode will use its built-in default. Because
+of that type checking is very basic and will allow things like 'implicit any'.
+Check the files:
+./src/main.ts
+./src/constants.ts
+
+Chapter 2 - Manually performing a lint check on files with the eslint CLI
+--------------------------------------------------------------------------------------
+1. With this npm script ESLint will perform linting on all .ts files in the src directory
+"lint": "eslint --ext .ts src/"
+
+Result:
+/home/mindprobe/Desktop/Repos/TypeScript-Reference/2021/1 - Configure ESLint VSCode extension for TypeScript/src/constants.ts
+5:7  error  Type number trivially inferred from a number literal, remove type annotation  @typescript-eslint/no-inferrable-types
+
+/home/mindprobe/Desktop/Repos/TypeScript-Reference/2021/1 - Configure ESLint VSCode extension for TypeScript/src/main.ts
+10:7  warning  'a' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+Note: Eslint does not perform the typescript type check.
+*/
 {
-  /*
-  Chapter 1 - Activate real-time TypeScript linting with the ESLint VSCode extension
-  --------------------------------------------------------------------------------------
-  1. First, we need to explicitly tell the eslint extension to watch typescript files for
-  linting errors (by default it lints only javascript and JSX files).
-
-  Inside VS Code use: Ctrl+Shift+P
-  Type: Preferences: Open Settings (JSON)
-  Paste this code inside the opened JSON file
-  {
-    "eslint.validate": ["typescript", "typescriptreact"]
-  }
-
-  2. Install the required packages
-  npm install --save-dev eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin
-
-  3. Create the .eslintrc configuration file
-  See below
-
-  Chapter 2 - Manually running a lint check on files
-  --------------------------------------------------------------------------------------
-  1. With this npm script ESLint will perform linting on all .ts files in the src directory
-  "lint": "eslint --ext .ts src/"
-  */
   "root": true,
   "env": {
     "node": true,
@@ -34,6 +40,9 @@
   "plugins": ["@typescript-eslint"],
   // Tells ESLint that your config extends the given configurations
   "extends": [
+    // ESLint's inbuilt "recommended" config - it turns on a small, sensible set of rules which lint for well-known best-practices.
+    "eslint:recommended",
+    // It's just like eslint:recommended, except it only turns on rules from our TypeScript-specific plugin.
     "plugin:@typescript-eslint/recommended"
   ]
 }

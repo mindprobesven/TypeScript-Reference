@@ -1,0 +1,52 @@
+/*
+Chapter 1 - Creating a tsconfig.json configuration for the TypeScript compiler
+--------------------------------------------------------------------------------------
+This guide builds on [ 1 - Configure ESLint VSCode extension for TypeScript ]
+
+1. The tsconfig.json is the configuration file for the TypeScript compiler. VSCode also
+uses this file to enable and control real-time type checking in the editor.
+
+2. We can now set a rule such as "strict": true, this rule includes 'noImplicitAny' which
+will throw 'Parameter 'value' implicitly has an 'any' type.ts(7006)' if any is used implicitly.
+Check the file ./src/main.ts for an example.
+
+Chapter 2 - Using the typescript compiler for type-checking and compiling to javascript
+--------------------------------------------------------------------------------------
+1. Now can setup a NPM script to run the typescript compiler
+package.json:
+"check-types": "tsc"
+
+Then run:
+npm run check-types
+
+Result:
+src/main.ts:17:14 - error TS7006: Parameter 'value' implicitly has an 'any' type.
+
+17 function bar(value) {
+                ~~~~~
+
+src/main.ts:22:5 - error TS2345: Argument of type 'string' is not assignable to parameter of type 'number'.
+
+22 foo('Some String');
+       ~~~~~~~~~~~~~
+2. The typescript compiler has also created a ./dist folder with the compiled javascript files.
+*/
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "target": "ES6",
+    // If specified, .js (as well as .d.ts, .js.map, etc.) files will be emitted into this directory.
+    "outDir": "./dist",
+    // The strict flag enables a wide range of type checking behavior
+    // It includes multiple rules such as noImplicitAny
+    "strict": true,
+    // This is set automatically when using 'strict'
+    // "noImplicitAny": true,
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+}

@@ -1,0 +1,37 @@
+/*
+Chapter 1 - Adding Airbnb's ESLint config with TypeScript support
+--------------------------------------------------------------------------------------
+This guide builds on [ 2 - Adding a tsconfig configuration ]
+
+Instructions at https://github.com/iamturns/eslint-config-airbnb-typescript
+*/
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": false
+  },
+  "parser": "@typescript-eslint/parser",
+  // The Airbnb config requires knowledge of the typescript configuration
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "extends": [
+    // Add the Airbnb config here 
+    "airbnb-typescript/base",
+    // The Airbnb config is not a single config file to cater for all typescript
+    // linting requirements. Airbnb recommends to add these configs as well for
+    // additional functionality.
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  // Add custom override rules
+  "rules": {
+    "max-len": ["warn", 80, 2, {"ignoreComments": true}],
+    "indent": ["error", 2],
+    "semi": ["error", "always"],
+    "no-console":  ["error", { "allow": ["warn", "error", "log"] }],
+    "import/no-extraneous-dependencies": "off"
+  }
+}
