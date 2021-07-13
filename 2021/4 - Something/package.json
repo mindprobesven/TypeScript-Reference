@@ -1,0 +1,26 @@
+{
+  "name": "eslint-airbnb-typescript",
+  "version": "1.0.0",
+  "description": "Setting up the Airbnb ESLint config with TypeScript support",
+  "private": true,
+  "author": "Sven Kohn",
+  "license": "ISC",
+  "scripts": {
+    "lint": "eslint --ext .ts src/",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "dev:watch": "NODE_ENV=development nodemon dist/main.js",
+    "start:dev": "concurrently -p {name}-{time} -t HH:mm:ss -c yellow.bold,blue.bold -k \"npm:build:watch\" \"npm:dev:watch\"",
+    "start:prod": "NODE_ENV=production node dist/main.js"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "concurrently": "^6.2.0",
+    "eslint": "^7.30.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-plugin-import": "^2.23.4",
+    "nodemon": "^2.0.7",
+    "typescript": "^4.3.5"
+  }
+}
