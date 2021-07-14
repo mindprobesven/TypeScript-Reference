@@ -5,3 +5,4 @@ const add = (a, b) => {
     return a + b;
 };
 exports.default = add;
+//# sourceMappingURL=add.js.map
