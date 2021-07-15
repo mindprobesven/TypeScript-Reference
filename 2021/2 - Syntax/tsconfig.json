@@ -7,6 +7,8 @@
     "removeComments": true,
     "strict": true,
     "esModuleInterop": true,
+    // Tells TypeScript to warn you if you write certain code that can’t be correctly interpreted by a single-file transpilation process
+    // "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     // Generate .d.ts files for every TypeScript or JavaScript file inside your project.

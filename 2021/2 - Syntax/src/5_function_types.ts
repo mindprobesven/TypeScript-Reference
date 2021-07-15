@@ -1,12 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /*
-Function Types
---------------------------------------------------------------------------------------
-*/
-
-import assert from 'assert';
-
-/*
 --------------------------------------------
 Function types
 --------------------------------------------
@@ -16,6 +9,9 @@ a single parameter of type number and returns a string.
 Normally, we must specify 'parameter' types for functions. But in this case, the type of
 num can be inferred from the function type and we can omit it.
 */
+
+import assert from 'assert';
+
 const stringify1: (num: number) => string = (num) => String(num);
 
 // If the function type is omitted, then the paramater must have a type annotation. TypeScript will
@@ -50,7 +46,7 @@ Optional parameters and default values
 --------------------------------------------
 */
 // A question mark after an identifier means that the parameter is optional.
-// Here the parameter 'multiplier' is optional and inferred either as number of undefined
+// Here the parameter 'multiplier' is optional and inferred either as number or undefined
 // %inferred: multiply: (num: number, multiplier?: number | undefined) => number
 const multiply1 = (num: number, multiplier?: number) => {
   if (multiplier === undefined) {
