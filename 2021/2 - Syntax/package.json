@@ -13,7 +13,7 @@
     "dev:watch": "NODE_ENV=development nodemon --enable-source-maps dist/main.js",
     "start:dev": "concurrently -p {name}-{time} -t HH:mm:ss -c yellow.bold,red.bold,blue.bold -k \"npm:lint:watch\" \"npm:build:watch\" \"npm:dev:watch\"",
     "start:prod": "NODE_ENV=production node --enable-source-maps dist/main.js",
-    "chapter:watch": "NODE_ENV=development nodemon --enable-source-maps dist/5_function_types.js",
+    "chapter:watch": "NODE_ENV=development nodemon --enable-source-maps dist/7_typing_objects.js",
     "start:chapter": "concurrently -p {name}-{time} -t HH:mm:ss -c yellow.bold,red.bold,blue.bold -k \"npm:lint:watch\" \"npm:build:watch\" \"npm:chapter:watch\""
   },
   "devDependencies": {

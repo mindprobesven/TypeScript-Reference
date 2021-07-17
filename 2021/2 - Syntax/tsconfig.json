@@ -7,7 +7,7 @@
     "removeComments": true,
     "strict": true,
     "esModuleInterop": true,
-    // Tells TypeScript to warn you if you write certain code that can’t be correctly interpreted by a single-file transpilation process
+    // Ensure that each file can be safely transpiled without relying on other imports.
     // "isolatedModules": true,
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
