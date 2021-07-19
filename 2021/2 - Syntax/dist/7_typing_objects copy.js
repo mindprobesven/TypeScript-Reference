@@ -40,4 +40,4 @@ const sven = {
 };
 assert_1.default.strictEqual(sven.fullName(true), 'SVEN KOHN');
 assert_1.default.strictEqual(sven.fullName(false), 'Sven Kohn');
-//# sourceMappingURL=7_typing_objects.js.map
+//# sourceMappingURL=7_typing_objects%20copy.js.map
