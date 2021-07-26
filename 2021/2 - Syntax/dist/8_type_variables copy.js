@@ -65,4 +65,4 @@ function fillArray(len, elem) {
 }
 assert_1.default.deepStrictEqual(fillArray(3, '*'), ['*', '*', '*']);
 assert_1.default.deepStrictEqual(fillArray(3, 10), [10, 10, 10]);
-//# sourceMappingURL=8_type_variables.js.map
+//# sourceMappingURL=8_type_variables%20copy.js.map

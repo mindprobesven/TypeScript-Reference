@@ -55,7 +55,7 @@ class SimpleStack<T> {
   }
 }
 
-// Here the class is instantiated with a 'type parameter' value 'string'
+// Here the class is instantiated with a 'type parameter' of value 'string'
 const stringStack = new SimpleStack<string>();
 stringStack.push('Sven');
 stringStack.push('Barbara');
@@ -114,29 +114,46 @@ assert.strictEqual(obj.method1<string>('Sven'), 'Sven');
 assert.strictEqual(obj.method2<number>(5), 5);
 assert.strictEqual(obj.method2<string>('Sven'), 'Sven');
 
-// const stringToArray = <T>(arr: T): T[] => [arr.split(' ')];
-const valueToArray = <T>(value: T): T[] => {
-  console.log(typeof value);
+// More complex example #1
+// --------------------------------------------------------------------------------------
+// The type variable T appears four times in this code:
+// It is introduced via fillArray<T>. Therefore, its scope is the function.
+// It is used for the first time in the type annotation for the parameter elem.
+// It is used for the second second time to specify the return type of fillArray().
+// It is also used as a type argument for the constructor Array().
 
-  if (typeof value === 'string') {
-    console.log(value.split(' '));
-    const foo = value.split(' ');
-    return new Array<T>().concat(foo);
-  }
+function fillArray<T>(len: number, elem: T): T[] {
+  return new Array<T>(len).fill(elem);
+}
 
-  if (typeof value === 'number') {
-    return new Array<T>().fill(value);
-  }
-  return [];
-  // const foo = String(arr).split(' ');
-  // const newArr = new Array<T>();
-  // newArr.push(5);
-  // return new Array<T>().push('f');
-  // const foo = (<string><unknown>arr).split(' ');
-  // return new Array<T>().fill(foo);
-  // return new Array<T>().fill(arr);
-};
+// We can omit the type parameter when calling fillArray because TypeScript can infer
+// T from the parameter elem.
 
-valueToArray<string>('S v e n');
-valueToArray<number>(555);
-// console.log(new Array<string>().concat('S v e n'.split(' ')));
+// %inferred: function fillArray<string>(len: number, elem: string): string[]
+assert.deepStrictEqual(fillArray(3, '*'), ['*', '*', '*']);
+// %inferred: function fillArray<number>(len: number, elem: number): number[]
+assert.deepStrictEqual(fillArray(3, 10), [10, 10, 10]);
+
+// More complex example #2
+// --------------------------------------------------------------------------------------
+interface Array1<T> {
+  concat(...items: Array<T[] | T>): T[];
+  reduce<U>(
+    callback: (state: U, element: T, index: number, array: T[]) => U,
+    firstState?: U
+  ): U;
+}
+
+// This is an interface for Arrays whose elements are of type T:
+
+// method .concat() has zero or more parameters (defined via a rest parameter). Each of those
+// parameters has the type T[]|T. That is, it is either an Array of T values or a single T value.
+
+// method .reduce() introduces its own type variable U. U is used to express the fact that the
+// following entities all have the same type.
+
+// In addition to state, callback() has the following parameters:
+
+// element, which has the same type T as the Array elements
+// index; a number
+// array with elements of type T
