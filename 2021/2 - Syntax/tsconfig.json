@@ -17,7 +17,9 @@
     "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     // Generate .d.ts files for every TypeScript or JavaScript file inside your project.
-    "declaration": true
+    "declaration": true,
+    "allowJs": true,
+    "checkJs": true
   },
   "include": [
     "./src/**/*"

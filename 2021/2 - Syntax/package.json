@@ -6,14 +6,14 @@
   "author": "Sven Kohn",
   "license": "ISC",
   "scripts": {
-    "lint": "eslint --ext .ts src/",
-    "lint:watch": "esw -w --color --ext .ts src/",
+    "lint": "eslint --ext .ts,.js src/",
+    "lint:watch": "esw -w --color --ext .ts,.js src/",
     "build": "tsc",
     "build:watch": "tsc --watch",
     "dev:watch": "NODE_ENV=development nodemon --enable-source-maps dist/main.js",
     "start:dev": "concurrently -p {name}-{time} -t HH:mm:ss -c yellow.bold,red.bold,blue.bold -k \"npm:lint:watch\" \"npm:build:watch\" \"npm:dev:watch\"",
     "start:prod": "NODE_ENV=production node --enable-source-maps dist/main.js",
-    "chapter:watch": "NODE_ENV=development nodemon --enable-source-maps dist/10_enums.js",
+    "chapter:watch": "NODE_ENV=development nodemon --enable-source-maps dist/7a_typing_objects_as_records.js",
     "start:chapter": "concurrently -p {name}-{time} -t HH:mm:ss -c yellow.bold,red.bold,blue.bold -k \"npm:lint:watch\" \"npm:build:watch\" \"npm:chapter:watch\""
   },
   "devDependencies": {
