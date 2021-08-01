@@ -3,7 +3,7 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 /*
 ----------------------------------------------------------------------------------------
-Union types
+Optional, default, undefined and null parameters
 ----------------------------------------------------------------------------------------
 */
 

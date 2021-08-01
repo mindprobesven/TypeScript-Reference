@@ -139,6 +139,6 @@ function isTypeof2<T extends keyof TypeMap>(v: unknown, typeString: T): v is Typ
 
 const value2: unknown = {};
 if (isTypeof2(value2, 'number')) {
-  // %inferred-type: string
+  // %inferred-type: number
   value2;
 }
