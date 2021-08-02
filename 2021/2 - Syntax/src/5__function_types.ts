@@ -1,3 +1,4 @@
+/* eslint-disable max-classes-per-file */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
 // Typing Functions
@@ -77,3 +78,63 @@ const joinNumbers = (...nums: number[]): string => nums.join('-');
 console.log(joinNumbers(1, 2, 3));
 
 assert.strictEqual(joinNumbers(1, 2, 3), '1-2-3');
+
+// Overloading methods
+// --------------------------------------------------------------------------------------
+class StringBuilder {
+  #data = '';
+
+  add(value: boolean): this;
+  add(value: number): this;
+  add(value: string): this;
+  add(value: unknown): this {
+    this.#data += String(value);
+    return this;
+  }
+
+  get data() {
+    return this.#data;
+  }
+}
+
+const sb = new StringBuilder();
+
+sb
+  // (method) StringBuilder.add(value: string): this (+2 overloads)
+  .add('Are you ')
+  .add(41)
+  .add(' years old?: ')
+  .add(true);
+
+assert.strictEqual(sb.data, 'Are you 41 years old?: true');
+
+// Overloading properties as arrow functions using an interface
+// --------------------------------------------------------------------------------------
+interface Add {
+  (value: boolean): StringBuilder2;
+  (value: number): StringBuilder2;
+  (value: string): StringBuilder2;
+}
+
+class StringBuilder2 {
+  #data = '';
+
+  add: Add = (value: unknown) => {
+    this.#data += String(value);
+    return this;
+  };
+
+  get data() {
+    return this.#data;
+  }
+}
+
+const sb1 = new StringBuilder2();
+sb1
+  // (value: string) => StringBuilder2 (+2 overloads)
+  .add('Are you ')
+  .add(41)
+  .add(' years old?: ')
+  .add(true);
+
+assert.strictEqual(sb1.data, 'Are you 41 years old?: true');
