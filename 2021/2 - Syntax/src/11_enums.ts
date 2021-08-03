@@ -8,7 +8,7 @@
 
 import assert from 'assert';
 
-// The 'member values' of enums can be numbers, strings, a mix or even omitted
+// The 'member values' of enums can be numbers, strings, a mix or even omitted.
 // The TypeScript manual uses camel-cased names that start with uppercase letters.
 enum Colors {
   Red = 0,
@@ -54,7 +54,7 @@ const getColorValue = (color: Colors) => {
     default:
       // In the default case, TypeScript infers the type 'never' for 'color' because we never get there.
       // If we would forget a possible case, for example (case Colors.Blue), then we get this error:
-      // Argument of type 'Colors' is not assignable to parameter of type 'never'
+      // @ts-error: Argument of type 'Colors' is not assignable to parameter of type 'never'
       throw new UnsupportedValueError(color);
   }
 };

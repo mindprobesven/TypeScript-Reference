@@ -18,7 +18,7 @@ class Color implements RgbColor {
   }
 }
 
-// Here is proof that 'Color' really is an interface as we can extend it
+// Here is proof that 'Color' really is an interface as we can 'extend' it
 interface RgbColor extends Color {
   rgbValue: [number, number, number];
 }

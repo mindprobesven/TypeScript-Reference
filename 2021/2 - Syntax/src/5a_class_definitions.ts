@@ -90,7 +90,7 @@ assert.strictEqual(inst2.privateFieldValue, 'bar');
 // @ts-error: Property '#privateMethod' is not accessible outside class 'MyClass2' because it has a private identifier
 // assert.strictEqual(inst2.#privateMethod(), 'foo');
 
-// Private fields
+// Protected properties
 // --------------------------------------------------------------------------------------
 // Private fields and private properties can’t be accessed in subclasses
 // We can fix this by switching from 'private' to 'protected'
@@ -161,14 +161,21 @@ assert.strictEqual(inst3.getData(), 'bar');
 // Using an object as instance property
 // --------------------------------------------------------------------------------------
 // If the compiler setting --strictPropertyInitialization is switched on (which is the case if we use --strict),
-// then TypeScript checks if all declared instance properties are correctly 'initialized'
+// then TypeScript checks if 'all' declared instance properties are correctly 'initialized'
+
+interface Props {
+  first: string,
+  last: string,
+}
 
 // 'Implements' ensures that the class declares all properties (first and last) that are part of interface 'Props'
 class MyClass4 implements Props {
+  // This will not work
   // @ts-error: Property 'first' has no initializer and is not definitely assigned in the constructor.
   // first: string;
   // last: string;
 
+  // Instead, we use exclamation marks (definite assignment assertions)
   first!: string;
   last!: string;
 
@@ -182,11 +189,6 @@ class MyClass4 implements Props {
     // We can use exclamation marks (definite assignment assertions) to switch off TypeScript’s warnings
     Object.assign(this, props);
   }
-}
-
-interface Props {
-  first: string,
-  last: string,
 }
 
 const inst4 = new MyClass4({ first: 'Sven', last: 'Kohn' });

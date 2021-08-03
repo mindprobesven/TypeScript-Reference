@@ -15,6 +15,7 @@ For type-checking JavaScript files
 import assert from 'assert';
 
 // Type information is added via JSDoc comments
+
 /**
  * @param {number} x - The first operand
  * @param {number} y - The second operand

@@ -1,10 +1,8 @@
 /* eslint-disable max-len */
 /* eslint-disable @typescript-eslint/no-unused-vars */
+
 // Union and intersection types
 // --------------------------------------------------------------------------------------
-// An assertion function checks if its parameter fulfills certain criteria and throws an
-
-import assert from 'assert';
 
 // Union types (|)
 // --------------------------------------------------------------------------------------
@@ -36,7 +34,7 @@ type ObjectTypeB = {
 
 type Union2 = ObjectTypeA | ObjectTypeB;
 
-function func1(arg: Union2) {
+function func(arg: Union2) {
   // 'sharedProp' is a property that is shared by all component types (ObjectTypeA and ObjectTypeB)
   // Therefore, we can safely access it.
   console.log(arg.sharedProp);

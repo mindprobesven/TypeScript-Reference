@@ -5,11 +5,11 @@
 /* eslint-disable @typescript-eslint/space-infix-ops */
 /* eslint-disable indent */
 
-// Type guards and assertion functions
+// Type guards
 // --------------------------------------------------------------------------------------
 // In TypeScript, a value can have a type that is too general for some operations –
 // for example, a union type.
-
+//
 // The solution is to use narrowing of types with type guards and assertion functions.
 
 import assert from 'assert';
@@ -50,7 +50,7 @@ assert.strictEqual(getScore2(3), 3);
 
 // typeof, instanceof, Array.isArray type guards
 // --------------------------------------------------------------------------------------
-function func(value: Function|Date|number[]) {
+function func(value: Function | Date | number[]) {
   if (typeof value === 'function') {
     // %inferred-type: Function
     value;
@@ -82,8 +82,10 @@ type Attendee = Teacher | Student;
 function getID(attendee: Attendee): string {
   switch (attendee.kind) {
     case 'Teacher':
+      // %inferred-type: Teacher
       return attendee.teacherId;
     case 'Student':
+      // %inferred-type: Student
       return attendee.studentId;
     default:
       throw new Error(attendee);
@@ -110,7 +112,7 @@ function func1(arg: unknown) {
   throw new Error(`Unsupported value: ${arg as string}`);
 }
 
-// Using overloading
+// User-defined type guards with overloading
 // --------------------------------------------------------------------------------------
 function isTypeof(value: unknown, typeString: 'boolean'): value is boolean;
 function isTypeof(value: unknown, typeString: 'number'): value is number;

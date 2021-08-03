@@ -3,17 +3,15 @@
 
 // The 'unknown' type
 // --------------------------------------------------------------------------------------
-// The type 'unknown' is a type-safe version of the type any.
-// Where 'any' allows us to do anything, unknown is much more restrictive.
-
-import assert from 'assert';
-
+// The type 'unknown' is a type-safe version of the type 'any'.
+// Where 'any' allows us to do anything, 'unknown' is much more restrictive.
+//
 // Before we can perform any operation on values of type unknown, we must first narrow
 // their types via:
 // --------------------------------------------------------------------------------------
 
 // Type assertions
-// --------------------------------------
+// --------------------------------------------------------------------------------------
 function func1(value: unknown) {
   // @ts-error: Object is of type 'unknown'.
   // return value.toFixed(2);
@@ -22,7 +20,7 @@ function func1(value: unknown) {
 }
 
 // Type guards
-// --------------------------------------
+// --------------------------------------------------------------------------------------
 function func2(value: unknown) {
   // @ts-error: Object is of type 'unknown'.
   // return value.length;
@@ -31,14 +29,11 @@ function func2(value: unknown) {
     // %inferred-type: string
     return value.length; // OK
   }
-
   return undefined;
 }
 
 // Assertion functions
-// --------------------------------------
-
-/** An assertion function */
+// --------------------------------------------------------------------------------------
 function assertIsRegExp(arg: unknown): asserts arg is RegExp {
   if (!(arg instanceof RegExp)) {
     throw new TypeError(`Not a RegExp: ${(arg as string)}`);

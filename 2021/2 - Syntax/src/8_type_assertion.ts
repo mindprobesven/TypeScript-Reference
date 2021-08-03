@@ -20,7 +20,7 @@ const data1: object = ['a', 'b', 'c'];
 // @ts-error: Property 'length' does not exist on type 'object'
 // assert.strictEqual(data1.length, 3);
 
-// We use type assertion that data1 is an Array. Now we can access property .lenght
+// We use type assertion that data1 is an Array. Now we can access property .length
 assert.strictEqual((data1 as Array<string>).length, 3);
 
 // Asserting an interface
