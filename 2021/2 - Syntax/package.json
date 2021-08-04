@@ -10,9 +10,6 @@
     "lint:watch": "esw -w --color --ext .ts,.js src/",
     "build": "tsc",
     "build:watch": "tsc --watch",
-    "dev:watch": "NODE_ENV=development nodemon --enable-source-maps dist/main.js",
-    "start:dev": "concurrently -p {name}-{time} -t HH:mm:ss -c yellow.bold,red.bold,blue.bold -k \"npm:lint:watch\" \"npm:build:watch\" \"npm:dev:watch\"",
-    "start:prod": "NODE_ENV=production node --enable-source-maps dist/main.js",
     "chapter:watch": "wait-on -t 15000 file:dist/14a_emit_declaration.js && NODE_ENV=development nodemon --enable-source-maps dist/14a_emit_declaration.js",
     "start:chapter": "concurrently -n Linter,Build,Chapter -p {name}-{time} -t HH:mm:ss -c yellow.bold,red.bold,blue.bold -k \"npm:lint:watch\" \"npm:build:watch\" \"npm:chapter:watch\""
   },
