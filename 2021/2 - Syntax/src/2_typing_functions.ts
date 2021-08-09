@@ -113,6 +113,29 @@ const joinNumbers = (...nums: number[]): string => nums.join('-');
 
 assert.strictEqual(joinNumbers(1, 2, 3), '1-2-3');
 
+// Overloading functions using an interface
+// --------------------------------------------------------------------------------------
+// Here we are overloading a function to accept different sets of params.
+interface Foo {
+  (num1: number, num2: number): string | number;
+  (num1: number): string | number;
+}
+
+const foo: Foo = (num1: unknown, num2?: unknown): string | number => {
+  if (typeof num1 === 'number' && typeof num2 === 'number') {
+    return String(num1 + num2);
+  }
+
+  if (!num2 && typeof num1 === 'number') {
+    return num1;
+  }
+
+  throw new Error('Unsupported type');
+};
+
+assert.strictEqual(foo(5), 5);
+assert.strictEqual(foo(5, 10), '15');
+
 // Overloading methods
 // --------------------------------------------------------------------------------------
 class StringBuilder {
